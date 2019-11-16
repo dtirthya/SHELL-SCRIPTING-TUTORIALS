@@ -1,56 +1,93 @@
 SHELL SCRIPTING TUTORIALS
 
-#Location where bash exists 
+#Location where bash exists
+
 ! /bin/bash
 
 #This is a comment
+
 echo "WELCOME TO SHELL PROGRAMMING TUTORIALS!"
 
 #System variables
+
 echo $BASH
 echo $BASH_VERSION
 echo $PWD
 
 #We can print in this way
+
 echo YOUR PRESENT WORKING DIRECTORY IS: $PWD
 
 #Declaring and printing a variable
+
 name=MAX
 echo HI $name!
 
 #Reading user input
+
 echo "ENTER NAME: "
 read var_name #Name of the variable in which we want to store
 echo HELLO $var_name!
 
 #Reading multiple inputs
+
 echo "ENTER NAMES: "
 read name_one name_two name_three
 echo "THE NAMES ARE: $name_one, $name_two, $name_three"
 
 #Another way
+
 read -p 'USERNAME: ' user_name #Reading on the same line
 echo USERNAME: $user_name
 
 #Read hidden text (for example, a user's password)
+
 read -p "USERNAME: " user_name
 read -sp "PASSWORD: " pass_word
-echo YOUR USERNAME IS: $user_name AND PASSWORD IS: $pass_word! 
+echo YOUR USERNAME IS: $user_name AND PASSWORD IS: $pass_word!
 
 #Creating an array and displaying
+
 echo "ENTER THE NAMES: "
 read -a names
 echo "NAMES: ${names[0]}, ${names[1]}"
 
 #If we dont specify a varable when reading, the default variable 'REPLY' stores that data. For example,
+
 echo "ENTER YOUR NAME: "
 read
 echo HELLO $REPLY!
 
 #Passing arguments
-$1 $2 $3 #First argument starts from $1. Then from there the number increases accrding to the number of arguments like $1, $2, $3,...,$n upto 'n' arguments. $0 is the shell script itself. 
-args=("$@") #Stores the arguments in an array 
+
+$1 $2 $3 #First argument starts from $1. Then from there the number increases accrding to the number of arguments like $1, $2, $3,...,$n upto 'n' arguments. $0 is the shell script itself.
+args=("$@") #Stores the arguments in an array
 echo ${args[0]}, ${args[1]}, ${args[2]} #Prints the elements of the array
 echo $@ #Prints all the arguments
 echo $# #Prints the number of arguments
 
+#if statement
+
+$1
+if [ $1 -ge 18 ]
+then
+  echo "YOU ARE ELIGIBLE TO VOTE!"
+else
+  echo "YOU ARE NOT ELIGIBLE TO VOTE!"
+fi
+
+#For more details on if statements, visit the link and also support the content creator
+#Link- http://www.codebind.com/linux-tutorials/bash-shell-scripting-statement-fi-else-fi-elif-else-fi/
+
+#File test operations
+
+#Checking whether a file is there in our directory
+
+echo -e "ENTER THE NAME OF THE FILE: \c" #-e flag is used to read the name in the same line, used with \c
+read name
+if [ -e $name ] #-e flag is used to check whether the file is there or not and whether it is a regular file. -d flag is used in case of directory. For block special -b, and for character special -c. -s checks whether the file is empty or not. -r,-w,-x flags checks whether the fle has read, write or execute permissions respectively. 
+then
+  echo "$name" is found!
+else
+  echo "$name" is not found!
+fi
