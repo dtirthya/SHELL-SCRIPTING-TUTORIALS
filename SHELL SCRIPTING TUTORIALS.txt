@@ -47,3 +47,10 @@ echo "ENTER YOUR NAME: "
 read
 echo HELLO $REPLY!
 
+#Passing arguments
+$1 $2 $3 #First argument starts from $1. Then from there the number increases accrding to the number of arguments like $1, $2, $3,...,$n upto 'n' arguments. $0 is the shell script itself. 
+args=("$@") #Stores the arguments in an array 
+echo ${args[0]}, ${args[1]}, ${args[2]} #Prints the elements of the array
+echo $@ #Prints all the arguments
+echo $# #Prints the number of arguments
+
