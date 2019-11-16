@@ -85,9 +85,52 @@ fi
 
 echo -e "ENTER THE NAME OF THE FILE: \c" #-e flag is used to read the name in the same line, used with \c
 read name
-if [ -e $name ] #-e flag is used to check whether the file is there or not and whether it is a regular file. -d flag is used in case of directory. For block special -b, and for character special -c. -s checks whether the file is empty or not. -r,-w,-x flags checks whether the fle has read, write or execute permissions respectively. 
+if [ -e $name ] #-e flag is used to check whether the file is there or not and whether it is a regular file. -d flag is used in case of directory. For block special -b, and for character special -c. -s checks whether the file is empty or not. -r,-w,-x flags checks whether the fle has read, write or execute permissions respectively.
 then
   echo "$name" is found!
 else
   echo "$name" is not found!
 fi
+
+#Append text to the end of a File
+
+echo -e "ENTER THE NAME OF THE FILE: \c"
+read name
+if [ -f $name ]
+then
+  if [ -w $name ]
+  then
+    echo "ENTER TEXT TO BE WRITTEN (PRESS CTRL+C TO EXIT): "
+    cat >> $name
+  else
+    echo "THE FILE DOES NOT HAVE WRITE PERMISSIONS"
+  fi
+else
+  echo "THE FILE DOES NOT EXISTS!"
+fi
+
+#Use of AND operator
+
+read -p "ENTER YOUR AGE: " age
+if [ $age -gt 4 ] && [ $age -lt 10 ] #We can use -a flag instead of using &&. In that case the syntax will be: if [ $age -gt 4 -a $age -lt 10 ]
+then
+  echo "YOU ARE ELIGIBLE!"
+else
+  echo "YOU ARE NOT ELIGIBLE!"
+fi
+
+#Use of OR operator
+
+read -p "ENTER YOUR AGE: " age
+if [ $age -ge 18 ] || [ "$age" -le 50 ] #We can use -o flag instead of using &&. In that case the syntax will be: if [ $age -ge 18 -o $age -le 50 ]
+then
+  echo "YOU ARE ELIGIBLE!"
+else
+  echo "YOU ARE NOT ELIGIBLE!"
+fi
+
+#We can use both AND and OR operators like this:
+#Example 1: if [[ syntax_one && syntax_two ]]
+#Example 2: if [[ syntax_one || syntax_two ]]
+#Example 3: if [[ syntax_one -a syntax_two ]]
+#Example 4: if [[ syntax_one -o syntax_two ]]
