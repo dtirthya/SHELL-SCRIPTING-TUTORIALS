@@ -1,0 +1,49 @@
+SHELL SCRIPTING TUTORIALS
+
+#Location where bash exists 
+! /bin/bash
+
+#This is a comment
+echo "WELCOME TO SHELL PROGRAMMING TUTORIALS!"
+
+#System variables
+echo $BASH
+echo $BASH_VERSION
+echo $PWD
+
+#We can print in this way
+echo YOUR PRESENT WORKING DIRECTORY IS: $PWD
+
+#Declaring and printing a variable
+name=MAX
+echo HI $name!
+
+#Reading user input
+echo "ENTER NAME: "
+read var_name #Name of the variable in which we want to store
+echo HELLO $var_name!
+
+#Reading multiple inputs
+echo "ENTER NAMES: "
+read name_one name_two name_three
+echo "THE NAMES ARE: $name_one, $name_two, $name_three"
+
+#Another way
+read -p 'USERNAME: ' user_name #Reading on the same line
+echo USERNAME: $user_name
+
+#Read hidden text (for example, a user's password)
+read -p "USERNAME: " user_name
+read -sp "PASSWORD: " pass_word
+echo YOUR USERNAME IS: $user_name AND PASSWORD IS: $pass_word! 
+
+#Creating an array and displaying
+echo "ENTER THE NAMES: "
+read -a names
+echo "NAMES: ${names[0]}, ${names[1]}"
+
+#If we dont specify a varable when reading, the default variable 'REPLY' stores that data. For example,
+echo "ENTER YOUR NAME: "
+read
+echo HELLO $REPLY!
+
