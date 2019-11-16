@@ -21,7 +21,7 @@ echo YOUR PRESENT WORKING DIRECTORY IS: $PWD
 #Declaring and printing a variable
 
 name=MAX
-echo HI $name!
+echo HI $name! #To access the value of the variable, we have to pt a $ before it.
 
 #Reading user input
 
