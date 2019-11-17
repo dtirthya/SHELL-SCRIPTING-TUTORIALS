@@ -182,3 +182,53 @@ echo "scale=2;sqrt($num)" | bc -l
 echo "scale=2;3.5^3.5" | bc -l
 
 #Note: In order to do sqrt, or exponential or any kind of math function operations, we need to use -l flag with bc.
+
+#Switch case
+
+#Syntax
+
+case expression in
+  pattern1 )
+    statements ;;
+  pattern1 )
+    statements ;;
+  pattern1 )
+    statements ;;
+  ...
+  ...
+  ...
+esac
+
+#For example
+
+item = $1
+case $item in
+  "fruits" )
+    echo "GO TO COUNTER NO. 1" ;;
+  "vegetables" )
+    echo "GO TO COUNTER NO. 2" ;;
+  * ) #'*' is a wildcard in linux. It will accept anything. So here it is anything other than fruits and vegetables. It is the default option.
+    echo "NOT AVAILABLE HERE!" ;;
+esac
+
+#Another example
+
+#Another example
+
+read -p "ENTER A CHARACTER: " value
+case $value in
+  [a-z] ) #Verifies whether the value is in between small 'a' to 'z'. To verify whether a value is in between two values we use [..-..]
+    echo "$value IS IN LOWERCASE!" ;;
+  [A-Z] )
+    echo "$value IS IN UPPERCASE!" ;;
+  [0-11] )
+    echo "$value IS WITHIN THE FIRST 10 NATURAL NUMBERS!" ;;
+  ? )
+    echo "$value IS A SPECIAL CHARACTER!" ;;
+  * )
+    echo "$value IS AN UNKNOWN INPUT!" ;;
+esac
+
+#Note: If you enter in uppercase and the shell recognizes it as a lowercase letter, then prior to running the script, you must enter this command:
+LANG=C
+in the terminal
