@@ -134,3 +134,51 @@ fi
 #Example 2: if [[ syntax_one || syntax_two ]]
 #Example 3: if [[ syntax_one -a syntax_two ]]
 #Example 4: if [[ syntax_one -o syntax_two ]]
+
+#Basic integer arithmetic operations
+
+$1 $2
+a=$1
+b=$2
+sum=$(( a + b ))
+echo $sum
+
+#Another example
+
+$1 $2 $3
+a=$1
+b=$2
+c=$3
+sum=$( expr $a \* $b \* $c ) #We can write in this way. Note: In case of multiplication, we have to use the '\' escape character, when using expr, as when using expr '*' can't be escaped.
+echo $sum
+
+#Another example
+
+$1 $2
+var=("$@")
+echo ${var[0]} ${var[1]}
+div=$( expr ${var[0]} - ${var[1]} )
+echo $div
+
+#Floating point arithmetic
+
+#Note: bc is a basic calculator which can perform calculations, both simple and floating point.
+
+#Example 1
+
+num_one=1
+num_two=2.5
+echo "$num_one+$num_two" | bc #Piping is used here where echoing the two numbers in this format serves as imput to bc.
+echo "30+23.5" | bc #We can use in this way also.
+echo "30+20" | bc #Not floaing point, but basic arithmetic operation.
+echo "scale=2;20.5/5" | bc #If we give this command without using scale, the output will be exactly 4.
+
+#Note: scale is a function where we specify upto how many decimal places we want to display our result. Here we are giving scale, a value equal to 2. That means, the result will also show the digits after the decimal point upto two digits.
+
+#Another example
+
+num=5
+echo "scale=2;sqrt($num)" | bc -l
+echo "scale=2;3.5^3.5" | bc -l
+
+#Note: In order to do sqrt, or exponential or any kind of math function operations, we need to use -l flag with bc.
