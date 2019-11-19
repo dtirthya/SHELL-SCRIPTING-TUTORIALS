@@ -232,3 +232,49 @@ esac
 #Note: If you enter in uppercase and the shell recognizes it as a lowercase letter, then prior to running the script, you must enter this command:
 LANG=C
 in the terminal
+
+#While loops
+n=1
+while (( $n <= 10 )) #You can use while [ $n -le 10 ]
+do
+  echo "$n"
+  (( ++n )) #You can use n=$(( n+1 ))
+done
+
+#For loops
+
+#Technique one
+
+for i in 1 2 3 4 5
+do
+  echo $i
+done
+
+#Technique two
+
+for i in {1..10} #Syntax from 1 to 10
+do
+  echo $i
+done
+
+#Technique three
+
+for i in {1..10..2} #Syntax from 1 to 10, value of i being incremented by two.
+do
+  echo $i
+done
+
+#Technique four
+
+for (( i=0; i<5; i++ ))
+do
+  echo $i
+done
+
+#Technique five
+
+for command in ls pwd date
+do
+  echo "$command"
+  $command
+done
